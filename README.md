@@ -16,14 +16,21 @@ Antes de rodar a aplicação faça:
 - 1. Clonar o repositório
 ```bash
 git clone https://github.com/samulolo/irs.git
-- 2. Criar e clonar um ambiente virtual
+```
+- 2. Criar um ambiente virtual
+```bash
 - python -m venv venv (MACOS)
 - virtual env venv (WINDOS)
-
+```
+- 3. Ativar o ambiente virtual
+```bash
+- source venv/bin/activate (macos)
+- venv/Scripts/activate (windows)
+```
 - 3. Instalar as dependências
+``` bash
 - pip install -r requirements.txt
-
-
+```
 ---
 
 ### 🔹 Como executar
@@ -33,8 +40,7 @@ git clone https://github.com/samulolo/irs.git
 ```bash
 # rodar o servidor local
 uvicorn main:app --reload
-
-
+```
 
 
 # Estrutura de request
@@ -47,6 +53,5 @@ POST /api/irs/v1
 {
   "gross_income": 50000,
   "dependents": 2,
-  "professional_order": true,
-  "tax_year": 2024
+  "professional_order": 600,
 }
