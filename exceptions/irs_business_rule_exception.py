@@ -1,0 +1,4 @@
+
+
+class IRSBusinessRuleException(Exception):
+    pass
