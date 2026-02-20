@@ -1,0 +1,13 @@
+{
+  "name": "Eliseu",
+  "age": 25,
+  "city": "Luanda",
+  "active": true,
+  "skills": ["Python", "Flask", "FastAPI"],
+  "dependents": 2,
+  "expenses": {
+    "health": 1200.50,
+    "education": 800.00,
+    "family": 450.30
+  }
+}

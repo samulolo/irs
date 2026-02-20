@@ -15,7 +15,7 @@ responses = {
     500: {"model": ErrorResponse, "description": "Erro interno"}
 }
 
-@irs_route.post("/api/v1", response_model=IRSCalculationResponseSchema,
+@irs_route.post("/v1", response_model=IRSCalculationResponseSchema,
                 status_code=status.HTTP_200_OK, responses=responses)
 def calculate(request : IRSCalculationRequestSchema,
                irs_calculator_service : IrsCalculationService = Depends(get_irs_calculator_service)):
