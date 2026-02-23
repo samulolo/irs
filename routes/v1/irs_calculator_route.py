@@ -5,6 +5,8 @@ from fastapi.responses import JSONResponse
 from schemas.v1.responses.irs_calculation_response import IRSCalculationResponseSchema
 from routes.v1.dependecies import get_irs_calculator_service
 from schemas.v1.responses.error_response import ErrorResponse
+from routes.v1.dependecies import get_irs_loader
+from schemas.v1.loader.irs_context import IRSContext
 
 
 irs_route = APIRouter(prefix="/api/irs", tags=["irs"])
@@ -15,11 +17,13 @@ responses = {
     500: {"model": ErrorResponse, "description": "Erro interno"}
 }
 
-@irs_route.post("/v1", response_model=IRSCalculationResponseSchema,
+@irs_route.post("/{year}/v1/calculate", response_model=IRSCalculationResponseSchema,
                 status_code=status.HTTP_200_OK, responses=responses)
-def calculate(request : IRSCalculationRequestSchema,
-               irs_calculator_service : IrsCalculationService = Depends(get_irs_calculator_service)):
-    response = irs_calculator_service.calculate(request).model_dump()
+def calculate(year: int ,request : IRSCalculationRequestSchema,
+               irs_calculator_service : IrsCalculationService = Depends(get_irs_calculator_service),
+               context : IRSContext = Depends(get_irs_loader)):
+    
+    response = irs_calculator_service.calculate(request, context).model_dump()
     return JSONResponse(
         status_code=status.HTTP_200_OK,
         content=response)

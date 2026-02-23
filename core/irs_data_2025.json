@@ -1,13 +1,22 @@
 {
-  "name": "Eliseu",
-  "age": 25,
-  "city": "Luanda",
-  "active": true,
-  "skills": ["Python", "Flask", "FastAPI"],
-  "dependents": 2,
-  "expenses": {
-    "health": 1200.50,
-    "education": 800.00,
-    "family": 450.30
+  "tax_year": 2025,
+  "minimum_deductions" : 4104,
+  "deductions": {
+    "health": {
+      "tax" : 0.15,
+      "limit": 1000
+    },
+    "education": {
+      "tax": 0.3,
+      "limit": 800
+    },
+    "dependents" : {
+        "ascendent": 525,
+        "kids" : 600
+    },
+    "family": {
+      "tax": 0.35,
+      "limit": 250
+    }
   }
 }

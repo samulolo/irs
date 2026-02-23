@@ -1,12 +1,12 @@
 from pydantic import BaseModel, field_validator
 from exceptions.greater_than_zero_exception import GreaterThanZeroException
 from schemas.v1.requests.deduction_request import DeductionSchema
+from schemas.v1.requests.dependents_request import DependentsSchema
 
 
 class IRSCalculationRequestSchema(BaseModel):
 
     gross_income : float
-    depenedents : int
     deductions : DeductionSchema
     profissional_order : float
 

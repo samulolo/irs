@@ -1,11 +1,14 @@
 from services.deduction.deduction import Deduction
+from schemas.v1.loader.irs_context import IRSContext
+from schemas.v1.requests.deduction_request import DeductionSchema
 
 class HealthExpensesDeduction(Deduction):
 
-    LIMIT = 1000.0
-    FEE = 0.15
-    def calculate(self, amount : float) -> float:
-        amount = self.validate_amount(amount)
-        discount = amount * self.FEE
-        return min(self.LIMIT, discount)
+    key = "health"
+
+    def calculate(self, deduction : DeductionSchema, context : IRSContext) -> float:
+        ctx = context.deduction(self.key)
+        amount = self.validate_amount(deduction.health)
+        discount = amount * ctx.get("tax")
+        return min(ctx.get("limit"), discount)
     

@@ -19,15 +19,3 @@ for route in routes:
 regist_exceptions(app)
 
 
-import json
-
-file_name = "irs_data_2025.json"
-
-BASE_DIR = Path("core") / f"irs_data_2025.json"
-
-print("DIRTÓRIO DO PROEJTO: ",BASE_DIR)
-
-
-with open("core/irs_data_2025.json", 'r', encoding="UTF-8") as f:
-    data = json.load(f)
-    print(data)
