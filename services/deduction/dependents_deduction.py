@@ -12,13 +12,15 @@ class DependentsDeduction(Deduction):
         if dependents.dependents.total < 0:
             raise ValueError("O número de dependentes não pode ser um valor negativo")
         
-        deduction = dep.get("kids") * dependents.dependents.total #Garante os 600 para cada dependente.
-        
-        if dependents.dependents.dependents_upto_3 + dependents.dependents.dependents_upto_6 > dependents.dependents.total:
-            raise ValueError("As idades não coicidem com o total de dependentes.")
+        deduction = dep.get("kids") * dependents.dependents.total  #Garante os 600 para cada dependente.
 
-        deduction += dependents.dependents.dependents_upto_3 * 126
-        deduction += dependents.dependents.dependents_upto_6 * 300
+        eligible_for_300 = max((
+            dependents.dependents.dependents_upto_3 +
+            dependents.dependents.dependents_upto_6) - 1, 0)
+      
+        deduction += dependents.dependents.dependents_upto_3 * context.deductions['education']['upto_3']
+        deduction += eligible_for_300 * context.deductions['education']['upto_6']
+
         
         return deduction
 

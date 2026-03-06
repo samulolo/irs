@@ -1,20 +1,21 @@
 from services.taxable_income_calculator import TaxableIncomeCalculator
-from core.tax_brackets import irs_brackets_2026
 from utils.util import format_number
+from schemas.v1.loader.irs_context import IRSContext
 
 class IrsAssessmentService:
 
     def __init__(self):
         self.taxable_income_service = TaxableIncomeCalculator()
 
-    def calculate(self, taxable_income : float):
+    def calculate(self, taxable_income : float, context : IRSContext):
         previous_bracket_value = 0
         remain_value = taxable_income
         coleta = 0
         irs_bracket = 0
         marginal_fee = 0
+        irs_bracket = context.irs_brackets
 
-        for bracket in irs_brackets_2026:
+        for bracket in irs_bracket:
             if remain_value <= 0: break
             rendimento_max = bracket['rendimento_max'] if bracket['rendimento_max'] is not None else taxable_income
             current_bracket = min(taxable_income, rendimento_max)

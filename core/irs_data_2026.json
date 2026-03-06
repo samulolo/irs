@@ -1,6 +1,7 @@
-
-
-irs_brackets_2026 = [
+{
+  "tax_year": 2026,
+  "minimum_deductions" : 4462.15,
+  "irs_brackets": [
     {"escalao": 1, "rendimento_max": 8342,   "taxa": 0.1250},
     {"escalao": 2, "rendimento_max": 12587,  "taxa": 0.1570},
     {"escalao": 3, "rendimento_max": 17838,  "taxa": 0.2120},
@@ -9,5 +10,26 @@ irs_brackets_2026 = [
     {"escalao": 6, "rendimento_max": 43090,  "taxa": 0.3490},
     {"escalao": 7, "rendimento_max": 46566,  "taxa": 0.4310},
     {"escalao": 8, "rendimento_max": 86634,  "taxa": 0.4460},
-    {"escalao": 9, "rendimento_max": None,   "taxa": .4800},
-]
+    {"escalao": 9, "rendimento_max": null,   "taxa": 0.4800}
+],
+  "deductions": {
+    "health": {
+      "tax" : 0.15,
+      "limit": 1000
+    },
+    "education": {
+      "tax": 0.3,
+      "limit": 800,
+      "upto_3" : 126,
+      "upto_6": 300
+    },
+    "dependents" : {
+        "ascendent": 525,
+        "kids" : 600
+    },
+    "family": {
+      "tax": 0.35,
+      "limit": 250
+    }
+  }
+}

@@ -1,6 +1,17 @@
 {
   "tax_year": 2025,
   "minimum_deductions" : 4104,
+  "irs_brackets": [
+    {"escalao": 1, "rendimento_max": 8059, "taxa": 0.125},
+    {"escalao": 2, "rendimento_max": 12160, "taxa": 0.16},
+    {"escalao": 3, "rendimento_max": 17233, "taxa": 0.215},
+    {"escalao": 4, "rendimento_max": 22306, "taxa": 0.244},
+    {"escalao": 5, "rendimento_max": 28400, "taxa": 0.314},
+    {"escalao": 6, "rendimento_max": 41629, "taxa": 0.349},
+    {"escalao": 7, "rendimento_max": 44987, "taxa": 0.431},
+    {"escalao": 8, "rendimento_max": 83696, "taxa": 0.446},
+    {"escalao": 9, "rendimento_max": null, "taxa": 0.48}
+  ],
   "deductions": {
     "health": {
       "tax" : 0.15,
@@ -8,7 +19,9 @@
     },
     "education": {
       "tax": 0.3,
-      "limit": 800
+      "limit": 800,
+      "upto_3" : 126,
+      "upto_6": 300
     },
     "dependents" : {
         "ascendent": 525,

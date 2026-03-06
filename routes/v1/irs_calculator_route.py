@@ -17,9 +17,9 @@ responses = {
     500: {"model": ErrorResponse, "description": "Erro interno"}
 }
 
-@irs_route.post("/{year}/v1/calculate", response_model=IRSCalculationResponseSchema,
+@irs_route.post("/{year}/v1/calculate/{income_category}", response_model=IRSCalculationResponseSchema,
                 status_code=status.HTTP_200_OK, responses=responses)
-def calculate(year: int ,request : IRSCalculationRequestSchema,
+def calculate(year: int , income_category : str ,request : IRSCalculationRequestSchema,
                irs_calculator_service : IrsCalculationService = Depends(get_irs_calculator_service),
                context : IRSContext = Depends(get_irs_loader)):
     

@@ -5,7 +5,6 @@ from schemas.v1.responses.irs_calculation_response import IRSCalculationResponse
 from schemas.v1.responses.deductions_response import DeductionsResponseSchema
 from schemas.v1.responses.tax_rates_schema import TaxRatesSchema
 from services.deduction.deduction_factory import DeductionFactory
-from services.irs.irs_loader_service import IRSDataLoaderService
 from schemas.v1.loader.irs_context import IRSContext
 
 
@@ -18,7 +17,7 @@ class IrsCalculationService:
         
     def calculate(self, request : IRSCalculationRequestSchema, context : IRSContext):
         taxable_income = self.taxable_income_servce.calculate(request.gross_income, request.profissional_order)
-        colet, tax, bracket, marginal_fee = self.irs_assessment_service.calculate(taxable_income)
+        colet, tax, bracket, marginal_fee = self.irs_assessment_service.calculate(taxable_income, context)
        
         deduction_factory = DeductionFactory(context=context)
         deductions = deduction_factory.execute(request.deductions)

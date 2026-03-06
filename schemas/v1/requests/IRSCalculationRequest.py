@@ -6,6 +6,8 @@ from schemas.v1.requests.dependents_request import DependentsSchema
 
 class IRSCalculationRequestSchema(BaseModel):
 
+    income_year : str = None
+    incomeType: str = None
     gross_income : float
     deductions : DeductionSchema
     profissional_order : float
